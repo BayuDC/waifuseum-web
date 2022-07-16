@@ -1,0 +1,21 @@
+{
+  "name": "waifuseum-web",
+  "description": "The museum of all waifus",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "nuxt dev --port 1234",
+    "build": "nuxt build",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview"
+  },
+  "devDependencies": {
+    "nuxt": "3.0.0-rc.5",
+    "vite": "^2.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BayuDC/waifuseum-web.git"
+  },
+  "author": "BayuDC <dev.bayudc@gmail.com>",
+  "license": "MIT"
+}
