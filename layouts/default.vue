@@ -24,3 +24,9 @@ useHead({
         </BaseContainer>
     </main>
 </template>
+
+<style lang="scss">
+main {
+    padding: 40px 0;
+}
+</style>
