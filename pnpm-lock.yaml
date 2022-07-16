@@ -1,11 +1,13 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@iconify/vue': ^3.2.1
   nuxt: 3.0.0-rc.5
   sass: ^1.53.0
   vite: ^2.3.0
 
 devDependencies:
+  '@iconify/vue': 3.2.1_vue@3.2.37
   nuxt: 3.0.0-rc.5_ivggmounzh3vkyf4atef4mjr3q
   sass: 1.53.0
   vite: 2.9.14_sass@1.53.0
@@ -316,6 +318,14 @@ packages:
     resolution: {integrity: sha512-MVbXLbTcAotOPUj0pAMhVtJ+3/kFkwJqc5qNOleOZTv6QkZZABDMS21dSrSlVswEHwrpWC03e4fWytjqKvuE2A==}
     dependencies:
       mime: 3.0.0
+    dev: true
+
+  /@iconify/vue/3.2.1_vue@3.2.37:
+    resolution: {integrity: sha512-c4R6ZgFo1JrJ8aPMMgOPgfU7lBswihMGR+yWe/P4ZukC3kTkeT4+lkt9Pc/itVFMkwva/S/7u9YofmYv57fnNQ==}
+    peerDependencies:
+      vue: 3.x
+    dependencies:
+      vue: 3.2.37
     dev: true
 
   /@ioredis/commands/1.2.0:

@@ -3,7 +3,7 @@
         <BaseContainer>
             <h1>Waifuseum</h1>
             <nav>
-                <BaseButton>Dashboard</BaseButton>
+                <BaseButton icon="bxs:bar-chart-alt-2">Dashboard</BaseButton>
             </nav>
         </BaseContainer>
     </header>
