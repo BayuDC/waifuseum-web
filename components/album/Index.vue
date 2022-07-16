@@ -11,6 +11,7 @@
 .album {
     h2 {
         font-size: 30px;
+        margin-bottom: 20px;
     }
 }
 </style>
