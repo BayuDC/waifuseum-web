@@ -4,6 +4,7 @@
         <h3>Lorem Ipsum</h3>
         <div class="meta">
             <p class="count"><b>69</b> Pictures</p>
+            <BaseBadge>Community</BaseBadge>
         </div>
     </div>
 </template>
@@ -30,6 +31,9 @@
     }
 
     .meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         .count {
             font-size: 14px;
             color: $gray;
