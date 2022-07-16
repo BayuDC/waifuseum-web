@@ -17,5 +17,10 @@ useHead({
 </script>
 
 <template>
-    <slot />
+    <Header />
+    <main>
+        <BaseContainer>
+            <slot />
+        </BaseContainer>
+    </main>
 </template>
