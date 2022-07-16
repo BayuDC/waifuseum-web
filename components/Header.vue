@@ -2,6 +2,9 @@
     <header>
         <BaseContainer>
             <h1>Waifuseum</h1>
+            <nav>
+                <BaseButton>Dashboard</BaseButton>
+            </nav>
         </BaseContainer>
     </header>
 </template>
@@ -15,6 +18,7 @@ header {
         height: 80px;
         display: flex;
         align-items: center;
+        justify-content: space-between;
     }
 
     h1 {
