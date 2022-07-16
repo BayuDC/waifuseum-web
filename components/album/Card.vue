@@ -1,12 +1,14 @@
 <template>
-    <div class="album-card">
-        <img src="https://img.waifuseum.my.id/?id=62bd16df4650eb132c77c35d&size=thumbnail" />
+    <NuxtLink to="/albums" class="album-card">
+        <figure>
+            <img src="https://img.waifuseum.my.id/?id=62bd16df4650eb132c77c35d&size=thumbnail" />
+        </figure>
         <h3>Lorem Ipsum</h3>
         <div class="meta">
             <p class="count"><b>69</b> Pictures</p>
             <BaseBadge>Community</BaseBadge>
         </div>
-    </div>
+    </NuxtLink>
 </template>
 
 <style lang="scss">
@@ -19,10 +21,15 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+    transition: background 0.3s;
 
-    img {
-        width: 100%;
+    figure {
+        overflow: hidden;
         border-radius: 10px;
+        img {
+            width: 100%;
+            transition: transform 0.3s;
+        }
     }
 
     h3 {
@@ -40,9 +47,13 @@
         }
     }
 
-    &,
-    a {
-        color: $black;
+    color: $black;
+
+    &:hover {
+        background: rgba($color: $green, $alpha: 0.16);
+        img {
+            transform: scale(1.08);
+        }
     }
 }
 </style>
