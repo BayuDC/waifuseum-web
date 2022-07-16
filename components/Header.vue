@@ -1,9 +1,11 @@
 <template>
     <header>
         <BaseContainer>
-            <h1>Waifuseum</h1>
+            <h1>
+                <NuxtLink to="/">Waifuseum</NuxtLink>
+            </h1>
             <nav>
-                <BaseButton icon="bxs:bar-chart-alt-2">Dashboard</BaseButton>
+                <BaseButton to="/dashboard" icon="bxs:bar-chart-alt-2">Dashboard</BaseButton>
             </nav>
         </BaseContainer>
     </header>
@@ -25,6 +27,10 @@ header {
         font-size: 32px;
         font-style: italic;
         font-weight: 700;
+
+        a {
+            color: $green;
+        }
     }
 }
 </style>

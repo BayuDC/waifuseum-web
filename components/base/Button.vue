@@ -5,7 +5,7 @@ defineProps({
 </script>
 
 <template>
-    <a href="#" class="btn" :class="{ 'btn-icon': icon }">
+    <NuxtLink class="btn" :class="{ 'btn-icon': icon }">
         <template v-if="icon">
             <span>
                 <slot />
@@ -13,7 +13,7 @@ defineProps({
             <BaseIcon :name="icon" />
         </template>
         <slot v-else />
-    </a>
+    </NuxtLink>
 </template>
 
 <style lang="scss">
