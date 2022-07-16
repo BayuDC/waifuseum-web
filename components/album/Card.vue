@@ -16,12 +16,12 @@
     border-radius: 15px;
     border: 4px solid $black;
     box-shadow: 4px 4px 0px $black;
-    display: inline-flex;
+    display: flex;
     flex-direction: column;
     gap: 10px;
 
     img {
-        max-width: 240px;
+        width: 100%;
         border-radius: 10px;
     }
 
