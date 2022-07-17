@@ -5,9 +5,9 @@ const { pending, data } = await useLazyFetch('https://lite.waifuseum.my.id/album
 <template>
     <section class="album">
         <h2>Recent Albums</h2>
-        <AlbumList>
-            <Loading v-if="pending" />
-            <li v-else v-for="album in data.albums" :key="album.id">
+        <div v-if="pending" class="loading">Loading...</div>
+        <AlbumList v-else>
+            <li v-for="album in data.albums" :key="album.id">
                 <AlbumCard v-bind="album" />
             </li>
         </AlbumList>
@@ -19,6 +19,14 @@ const { pending, data } = await useLazyFetch('https://lite.waifuseum.my.id/album
     h2 {
         font-size: 30px;
         margin-bottom: 20px;
+    }
+
+    .loading {
+        @include card;
+        font-size: 20px;
+        font-weight: 600;
+        text-align: center;
+        color: $gray;
     }
 }
 </style>
