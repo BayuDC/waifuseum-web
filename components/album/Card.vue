@@ -1,12 +1,25 @@
+<script setup>
+defineProps({
+    id: String,
+    name: String,
+    slug: String,
+    community: Boolean,
+    private: Boolean,
+    picturesCount: Number,
+    pictures: Array,
+});
+</script>
+
 <template>
-    <NuxtLink to="/albums" class="album-card">
-        <figure>
-            <img src="https://img.waifuseum.my.id/?id=62bd16df4650eb132c77c35d&size=thumbnail" />
-        </figure>
-        <h3>Lorem Ipsum</h3>
+    <NuxtLink :to="'/albums/' + slug" class="album-card">
+        <figure><img :src="'https://img.waifuseum.my.id/?size=thumbnail&id=' + pictures[0].id" /></figure>
+        <h3>{{ name }}</h3>
         <div class="meta">
-            <p class="count"><b>69</b> Pictures</p>
-            <BaseBadge>Community</BaseBadge>
+            <p class="count">
+                <b>{{ picturesCount }}</b> Pictures
+            </p>
+            <BaseBadge v-if="community">Community</BaseBadge>
+            <BaseBadge v-if="private">Private</BaseBadge>
         </div>
     </NuxtLink>
 </template>
@@ -27,6 +40,7 @@
         overflow: hidden;
         border-radius: 10px;
         img {
+            display: block;
             width: 100%;
             transition: transform 0.3s;
         }

@@ -1,8 +1,6 @@
 <template>
     <ul class="album-list">
-        <li v-for="_ in 10">
-            <slot />
-        </li>
+        <slot />
     </ul>
 </template>
 

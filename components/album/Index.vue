@@ -1,16 +1,14 @@
 <script setup>
 const { data } = await useFetch('https://lite.waifuseum.my.id/albums');
-
-onMounted(() => {
-    console.log(data.albums);
-});
 </script>
 
 <template>
     <section class="album">
         <h2>Recent Albums</h2>
         <AlbumList>
-            <AlbumCard />
+            <li v-for="album in data.albums" :key="album.id">
+                <AlbumCard v-bind="album" />
+            </li>
         </AlbumList>
     </section>
 </template>
