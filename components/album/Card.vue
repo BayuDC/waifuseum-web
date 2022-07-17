@@ -31,10 +31,12 @@ defineProps({
     border-radius: 15px;
     border: 4px solid $black;
     box-shadow: 4px 4px 0px $black;
+    transition: background 0.3s;
     display: flex;
     flex-direction: column;
     gap: 10px;
-    transition: background 0.3s;
+    height: 100%;
+    box-sizing: border-box;
 
     figure {
         overflow: hidden;
@@ -48,13 +50,14 @@ defineProps({
 
     h3 {
         font-size: 24px;
-        line-height: 26px;
+        line-height: 28px;
     }
 
     .meta {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        margin-top: auto;
         .count {
             font-size: 14px;
             color: $gray;
