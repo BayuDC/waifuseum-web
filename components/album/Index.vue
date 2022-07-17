@@ -1,3 +1,11 @@
+<script setup>
+const { data } = await useFetch('https://lite.waifuseum.my.id/albums');
+
+onMounted(() => {
+    console.log(data.albums);
+});
+</script>
+
 <template>
     <section class="album">
         <h2>Recent Albums</h2>
