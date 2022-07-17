@@ -40,11 +40,7 @@ const imgLoaded = ref(false);
 
 <style lang="scss">
 .album-card {
-    padding: 15px;
-    background: white;
-    border-radius: 15px;
-    border: 4px solid $black;
-    box-shadow: 4px 4px 0px $black;
+    @include card;
     transition: background 0.3s;
     display: flex;
     flex-direction: column;
