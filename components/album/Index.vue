@@ -1,12 +1,13 @@
 <script setup>
-const { data } = await useFetch('https://lite.waifuseum.my.id/albums');
+const { pending, data } = await useLazyFetch('https://lite.waifuseum.my.id/albums?count=11');
 </script>
 
 <template>
     <section class="album">
         <h2>Recent Albums</h2>
         <AlbumList>
-            <li v-for="album in data.albums" :key="album.id">
+            <Loading v-if="pending" />
+            <li v-else v-for="album in data.albums" :key="album.id">
                 <AlbumCard v-bind="album" />
             </li>
         </AlbumList>
