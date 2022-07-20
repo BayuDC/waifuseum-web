@@ -13,7 +13,7 @@ const imgLoaded = ref(false);
 </script>
 
 <template>
-    <NuxtLink :to="'/albums/' + slug" class="album-card">
+    <NuxtLink :to="'/albums/' + id" class="album-card">
         <figure>
             <img
                 v-show="imgLoaded"
