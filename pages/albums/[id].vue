@@ -8,5 +8,5 @@ const { data } = await useFetch('https://lite.waifuseum.my.id/albums/' + id, {
 </script>
 
 <template>
-    <AlbumDetail :album="data.album" />
+    <AlbumDetail v-bind="data.album" />
 </template>
