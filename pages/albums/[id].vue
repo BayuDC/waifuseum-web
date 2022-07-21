@@ -1,12 +1,12 @@
 <script setup>
 const route = useRoute();
 
-const albumId = route.params.id;
-const { data } = await useFetch('https://lite.waifuseum.my.id/albums/' + albumId, { initialCache: false });
+const id = route.params.id;
+const { data } = await useFetch('https://lite.waifuseum.my.id/albums/' + id, {
+    initialCache: false,
+});
 </script>
 
 <template>
-    <div>
-        <h2>{{ data.album.name }}</h2>
-    </div>
+    <AlbumDetail :album="data.album" />
 </template>
