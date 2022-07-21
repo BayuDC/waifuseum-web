@@ -1,11 +1,16 @@
 <script setup>
-defineProps({
+const props = defineProps({
+    id: String,
     name: String,
     community: Boolean,
     private: Boolean,
     picturesCount: Number,
-    createdAt: Date,
+    createdAt: String,
     createdBy: Object,
+});
+
+const { data } = await useFetch(`https://lite.waifuseum.my.id/albums/${props.id}/pictures?count=12`, {
+    initialCache: false,
 });
 </script>
 <template>
@@ -18,10 +23,12 @@ defineProps({
                 <u>{{ createdBy.name }}</u>
             </p>
         </div>
-        <div class="badges">
+        <!-- <div class="badges">
             <BaseBadge v-if="community">Community</BaseBadge>
             <BaseBadge v-if="private">Private</BaseBadge>
-        </div>
+        </div> -->
+
+        <PictureList :pictures="data.pictures" />
     </div>
 </template>
 
@@ -36,13 +43,16 @@ defineProps({
         display: inline-block;
         border-left: 5px $green solid;
         border-radius: 0 10px 10px 0;
-        background: rgba($green, 0.2);
+        background: rgba($green, 0.16);
         font-size: 16px;
         font-weight: 500;
         color: $gray;
     }
     .badges {
-        margin: 10px 0 20px 0;
+        margin-top: 10px;
+    }
+    .picture-list {
+        margin-top: 40px;
     }
 }
 </style>
