@@ -15,19 +15,4 @@ defineProps({
     </section>
 </template>
 
-<style lang="scss">
-.album {
-    h2 {
-        font-size: 30px;
-        margin-bottom: 20px;
-    }
-
-    .loading {
-        @include card;
-        font-size: 20px;
-        font-weight: 600;
-        text-align: center;
-        color: $gray;
-    }
-}
-</style>
+<style lang="scss"></style>
