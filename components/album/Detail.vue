@@ -8,10 +8,6 @@ const props = defineProps({
     createdAt: String,
     createdBy: Object,
 });
-
-const { data } = await useFetch(`https://lite.waifuseum.my.id/albums/${props.id}/pictures?count=12`, {
-    initialCache: false,
-});
 </script>
 <template>
     <div class="album-detail">
@@ -27,8 +23,6 @@ const { data } = await useFetch(`https://lite.waifuseum.my.id/albums/${props.id}
             <BaseBadge v-if="community">Community</BaseBadge>
             <BaseBadge v-if="private">Private</BaseBadge>
         </div> -->
-
-        <PictureList :pictures="data.pictures" />
     </div>
 </template>
 
@@ -51,8 +45,6 @@ const { data } = await useFetch(`https://lite.waifuseum.my.id/albums/${props.id}
     .badges {
         margin-top: 10px;
     }
-    .picture-list {
-        margin-top: 40px;
-    }
+    margin-bottom: 40px;
 }
 </style>
