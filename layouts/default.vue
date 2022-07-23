@@ -21,7 +21,7 @@ useHead({
 </script>
 
 <template>
-    <div>
+    <div class="app">
         <Header />
         <main>
             <BaseContainer>
@@ -38,6 +38,23 @@ main {
     h2 {
         font-size: 30px;
         margin-bottom: 20px;
+    }
+}
+
+.page {
+    &-enter-active,
+    &-leave-active {
+        transition: 0.3s;
+    }
+    &-enter-from,
+    &-leave-to {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    &-enter-to,
+    &-leave-from {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 </style>
