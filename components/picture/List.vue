@@ -21,7 +21,7 @@ watch(openStory, () => {
                 <BasePicture :src="'https://img.waifuseum.my.id/?size=thumbnail&id=' + picture.id" />
             </li>
         </BaseInfinite>
-        <PictureStory v-if="openStory" @close="openStory = false" />
+        <PictureStory :render="openStory" @close="openStory = false" />
     </div>
 </template>
 

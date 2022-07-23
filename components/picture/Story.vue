@@ -1,11 +1,14 @@
 <script setup>
 defineEmits(['close']);
+defineProps(['render']);
 </script>
 
 <template>
-    <div class="picture-story">
-        <BaseButton icon="ep:close-bold" class="btn-close" @click="$emit('close')">Close</BaseButton>
-    </div>
+    <Transition name="picture-story">
+        <div v-if="render" class="picture-story">
+            <BaseButton icon="ep:close-bold" class="btn-close" @click="$emit('close')">Close</BaseButton>
+        </div>
+    </Transition>
 </template>
 
 <style lang="scss">
@@ -15,8 +18,8 @@ defineEmits(['close']);
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba($color: $gray, $alpha: 0.8);
-    backdrop-filter: blur(10px);
+    background: rgba($color: $gray, $alpha: 0.6);
+    backdrop-filter: blur(16px);
 
     .btn {
         position: absolute;
@@ -25,6 +28,19 @@ defineEmits(['close']);
             right: 20px;
             top: 20px;
         }
+    }
+
+    &-enter-active,
+    &-leave-active {
+        transition: 0.3s;
+    }
+    &-enter-from,
+    &-leave-to {
+        opacity: 0;
+    }
+    &-enter-to,
+    &-leave-from {
+        opacity: 1;
     }
 }
 </style>
