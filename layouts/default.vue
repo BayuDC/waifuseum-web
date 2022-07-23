@@ -1,4 +1,8 @@
 <script setup>
+useNuxtApp().hook('page:finish', () => {
+    window.scrollTo(0, 0);
+});
+
 useHead({
     title: 'Waifuseum',
     // titleTemplate: (title) => `My App - ${title}`,
