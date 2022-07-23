@@ -19,5 +19,17 @@ const props = defineProps({
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 15px;
+
+    li {
+        img {
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        &:hover {
+            img {
+                transform: scale(1.08);
+            }
+        }
+    }
 }
 </style>
