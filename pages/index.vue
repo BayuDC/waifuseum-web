@@ -1,7 +1,9 @@
 <script setup>
-const { data: albumData } = await useFetch('https://lite.waifuseum.my.id/albums?count=11');
+const { data: albumData } = await useFetch('https://lite.waifuseum.my.id/albums', {
+    params: { count: 11 },
+});
 </script>
 
 <template>
-    <Album :data="albumData" />
+    <AlbumRecent :albums="albumData.albums" />
 </template>

@@ -1,8 +1,17 @@
+<script setup>
+defineProps({
+    albums: Array,
+    showMore: Boolean,
+});
+</script>
+
 <template>
     <ul class="album-list">
-        <slot />
+        <li v-for="album in albums" :key="album.id">
+            <AlbumCard :album="album" />
+        </li>
         <li class="more">
-            <NuxtLink to="/albums">
+            <NuxtLink to="/albums" v-if="showMore">
                 <div>
                     <span>See More</span>
                     <BaseIcon name="charm:arrow-right" width="30" height="30" />

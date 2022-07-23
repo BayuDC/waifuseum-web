@@ -1,27 +1,19 @@
 <script setup>
 defineProps({
-    id: String,
-    name: String,
-    slug: String,
-    community: Boolean,
-    private: Boolean,
-    picturesCount: Number,
-    pictures: Array,
+    album: Object,
 });
-
-const imgLoaded = ref(false);
 </script>
 
 <template>
-    <NuxtLink :to="'/albums/' + id" class="album-card">
-        <BasePicture :src="'https://img.waifuseum.my.id/?size=thumbnail&id=' + pictures[0].id" />
-        <h3>{{ name }}</h3>
+    <NuxtLink class="album-card" :to="'/albums/' + album.id">
+        <BasePicture :src="'https://img.waifuseum.my.id/?size=thumbnail&id=' + album.pictures[0].id" />
+        <h3>{{ album.name }}</h3>
         <div class="meta">
             <p class="count">
-                <b>{{ picturesCount }}</b> Pictures
+                <b>{{ album.picturesCount }}</b> Pictures
             </p>
-            <BaseBadge v-if="community">Community</BaseBadge>
-            <BaseBadge v-if="private">Private</BaseBadge>
+            <BaseBadge v-if="album.community">Community</BaseBadge>
+            <BaseBadge v-if="album.private">Private</BaseBadge>
         </div>
     </NuxtLink>
 </template>

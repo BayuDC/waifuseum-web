@@ -1,27 +1,21 @@
 <script setup>
-const props = defineProps({
-    id: String,
-    name: String,
-    community: Boolean,
-    private: Boolean,
-    picturesCount: Number,
-    createdAt: String,
-    createdBy: Object,
+defineProps({
+    album: Object,
 });
 </script>
 <template>
     <div class="album-detail">
-        <h2>{{ name }}</h2>
+        <h2>{{ album.name }}</h2>
         <div class="info">
             <p>
-                A total of <b>{{ picturesCount }}</b> pictures since
-                <b>{{ new Date(createdAt).toLocaleDateString('id-ID') }}</b> have been added by
-                <u>{{ createdBy.name }}</u>
+                A total of <b>{{ album.picturesCount }}</b> pictures since
+                <b>{{ new Date(album.createdAt).toLocaleDateString('id-ID') }}</b> have been added by
+                <u>{{ album.createdBy.name }}</u>
             </p>
         </div>
         <!-- <div class="badges">
-            <BaseBadge v-if="community">Community</BaseBadge>
-            <BaseBadge v-if="private">Private</BaseBadge>
+            <BaseBadge v-if="album.community">Community</BaseBadge>
+            <BaseBadge v-if="album.private">Private</BaseBadge>
         </div> -->
     </div>
 </template>
@@ -45,6 +39,6 @@ const props = defineProps({
     .badges {
         margin-top: 10px;
     }
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 </style>
