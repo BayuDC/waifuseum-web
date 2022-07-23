@@ -1,6 +1,6 @@
 <script setup>
 defineEmits(['close', 'next', 'prev']);
-defineProps(['pictureId']);
+defineProps(['pictureId', 'next', 'prev']);
 </script>
 
 <template>
@@ -8,10 +8,10 @@ defineProps(['pictureId']);
         <div v-if="pictureId" class="picture-story">
             <img :src="'https://img.waifuseum.my.id/?size=standard&id=' + pictureId" />
             <nav>
-                <button class="prev" @click="$emit('prev')">
+                <button class="prev" @click="$emit('prev')" :disabled="!prev">
                     <BaseIcon name="ic:round-navigate-before" width="60" height="60" />
                 </button>
-                <button class="next" @click="$emit('next')">
+                <button class="next" @click="$emit('next')" :disabled="!next">
                     <BaseIcon name="ic:round-navigate-next" width="60" height="60" />
                 </button>
             </nav>
@@ -56,6 +56,9 @@ defineProps(['pictureId']);
 
             &:hover {
                 background: rgba($color: $white, $alpha: 0.4);
+            }
+            &[disabled] {
+                visibility: hidden;
             }
         }
 
