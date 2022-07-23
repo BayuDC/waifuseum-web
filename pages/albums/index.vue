@@ -2,23 +2,31 @@
 const page = ref(1);
 const more = ref(true);
 
-const { data, refresh } = await useFetch(() => `https://lite.waifuseum.my.id/albums?count=12&page=${page.value}`);
+const { data: albumData, refresh: albumRefresh } = await useFetch(
+    () => `https://lite.waifuseum.my.id/albums?count=12&page=${page.value}`
+);
 
-const albums = ref(data.value.albums);
+const albums = ref([]);
 
-watch(data, () => {
-    albums.value = [...albums.value, ...data.value.albums];
-    if (data.value.albums.length < 12) more.value == false;
-});
+watch(
+    albumData,
+    () => {
+        albums.value = [...albums.value, ...albumData.value.albums];
+        if (albumData.value.albums.length < 12) more.value == false;
+    },
+    { immediate: true }
+);
 
 function loadMore() {
     if (!more.value) return;
 
     page.value++;
-    refresh();
+    albumRefresh();
 }
 </script>
 
 <template>
-    <AlbumAll :albums="albums" @finish="loadMore" />
+    <div>
+        <AlbumAll :albums="albums" @finish="loadMore" />
+    </div>
 </template>
