@@ -8,7 +8,7 @@ defineProps({
 </script>
 
 <template>
-    <component :is="infinite ? BaseInfinite : 'ul'" class="album-list">
+    <component :is="infinite ? BaseInfinite : 'ul'" class="album-list" :data="albums">
         <li v-for="album in albums" :key="album.id">
             <AlbumCard :album="album" />
         </li>

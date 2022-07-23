@@ -2,20 +2,11 @@
 const props = defineProps({
     pictures: Array,
 });
-
-const pics = ref(props.pictures);
-
-watch(
-    () => props.pictures,
-    (current, prev) => {
-        pics.value = [...pics.value, ...props.pictures];
-    }
-);
 </script>
 
 <template>
-    <BaseInfinite is="ul" :data="pics" class="picture-list">
-        <li v-for="picture in pics" :key="picture.id">
+    <BaseInfinite is="ul" :data="pictures" class="picture-list">
+        <li v-for="picture in pictures" :key="picture.id">
             <BasePicture :src="'https://img.waifuseum.my.id/?size=thumbnail&id=' + picture.id" />
         </li>
     </BaseInfinite>
