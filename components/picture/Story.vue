@@ -1,12 +1,25 @@
 <script setup>
 defineEmits(['close', 'next', 'prev']);
 defineProps(['pictureId', 'next', 'prev']);
+
+const loaded = ref(false);
+
+onUpdated(() => {
+    loaded.value = false;
+});
 </script>
 
 <template>
     <Transition name="picture-story">
         <div v-if="pictureId" class="picture-story">
-            <img :src="'https://img.waifuseum.my.id/?size=standard&id=' + pictureId" />
+            <img
+                v-show="loaded"
+                @load="loaded = true"
+                :src="'https://img.waifuseum.my.id/?size=standard&id=' + pictureId"
+            />
+            <div class="loading" v-if="!loaded">
+                <BaseIcon name="eos-icons:three-dots-loading" width="120" height="120" />
+            </div>
             <nav>
                 <button class="prev" @click="$emit('prev')" :disabled="!prev">
                     <BaseIcon name="ic:round-navigate-before" width="60" height="60" />
@@ -93,6 +106,10 @@ defineProps(['pictureId', 'next', 'prev']);
             right: 20px;
             top: 20px;
         }
+    }
+    .loading {
+        color: $white;
+        margin: auto;
     }
 
     &-enter-active,
