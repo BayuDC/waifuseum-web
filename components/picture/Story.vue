@@ -1,12 +1,13 @@
 <script setup>
 defineEmits(['close']);
-defineProps(['render']);
+defineProps(['pictureId']);
 </script>
 
 <template>
     <Transition name="picture-story">
-        <div v-if="render" class="picture-story">
+        <div v-if="pictureId" class="picture-story">
             <BaseButton icon="ep:close-bold" class="btn-close" @click="$emit('close')">Close</BaseButton>
+            <img :src="'https://img.waifuseum.my.id/?size=standard&id=' + pictureId" />
         </div>
     </Transition>
 </template>
@@ -20,6 +21,14 @@ defineProps(['render']);
     bottom: 0;
     background: rgba($color: $gray, $alpha: 0.6);
     backdrop-filter: blur(16px);
+    display: flex;
+
+    img {
+        display: block;
+        max-width: 100%;
+        max-height: 100%;
+        margin: auto;
+    }
 
     .btn {
         position: absolute;

@@ -3,10 +3,10 @@ const props = defineProps({
     pictures: Array,
 });
 
-const openStory = ref(false);
+const pictureId = ref(null);
 
-watch(openStory, () => {
-    if (openStory.value) {
+watch(pictureId, () => {
+    if (pictureId.value) {
         document.body.classList.add('overflow-hidden');
     } else {
         document.body.classList.remove('overflow-hidden');
@@ -17,11 +17,11 @@ watch(openStory, () => {
 <template>
     <div>
         <BaseInfinite is="ul" :data="pictures" class="picture-list" @finish="$emit('finish')">
-            <li v-for="picture in pictures" :key="picture.id" @click="openStory = true">
+            <li v-for="picture in pictures" :key="picture.id" @click="pictureId = picture.id">
                 <BasePicture :src="'https://img.waifuseum.my.id/?size=thumbnail&id=' + picture.id" />
             </li>
         </BaseInfinite>
-        <PictureStory :render="openStory" @close="openStory = false" />
+        <PictureStory :pictureId="pictureId" @close="pictureId = null" />
     </div>
 </template>
 
