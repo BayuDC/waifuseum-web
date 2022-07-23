@@ -7,6 +7,6 @@ defineProps({
 <template>
     <section class="album-recent">
         <h2>Recent Albums</h2>
-        <AlbumList :albums="albums" showMore />
+        <AlbumList :albums="albums" />
     </section>
 </template>

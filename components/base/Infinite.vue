@@ -1,6 +1,6 @@
 <script setup>
 const props = defineProps({
-    is: String,
+    is: { type: String, default: 'ul' },
     data: Array,
 });
 const emit = defineEmits(['finish']);

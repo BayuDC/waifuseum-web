@@ -1,24 +1,26 @@
 <script setup>
+const BaseInfinite = resolveComponent('BaseInfinite');
+
 defineProps({
     albums: Array,
-    showMore: Boolean,
+    infinite: Boolean,
 });
 </script>
 
 <template>
-    <ul class="album-list">
+    <component :is="infinite ? BaseInfinite : 'ul'" class="album-list">
         <li v-for="album in albums" :key="album.id">
             <AlbumCard :album="album" />
         </li>
-        <li class="more">
-            <NuxtLink to="/albums" v-if="showMore">
+        <li class="more" v-if="!infinite">
+            <NuxtLink to="/albums">
                 <div>
                     <span>See More</span>
                     <BaseIcon name="charm:arrow-right" width="30" height="30" />
                 </div>
             </NuxtLink>
         </li>
-    </ul>
+    </component>
 </template>
 
 <style lang="scss">
