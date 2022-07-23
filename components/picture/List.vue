@@ -44,7 +44,8 @@ function prev() {
             </li>
         </BaseInfinite>
         <PictureStory
-            :pictureId="picture.id"
+            :picture="picture"
+            :count="pictures.length"
             @close="picture.id = null"
             @next="next"
             @prev="prev"

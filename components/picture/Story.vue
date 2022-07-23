@@ -1,24 +1,27 @@
 <script setup>
 defineEmits(['close', 'next', 'prev']);
-defineProps(['pictureId', 'next', 'prev']);
+const props = defineProps(['picture', 'count', 'next', 'prev']);
 
 const loaded = ref(false);
 
-onUpdated(() => {
+watch(props.picture, () => {
     loaded.value = false;
 });
 </script>
 
 <template>
     <Transition name="picture-story">
-        <div v-if="pictureId" class="picture-story">
+        <div v-if="picture.id" class="picture-story">
             <img
                 v-show="loaded"
                 @load="loaded = true"
-                :src="'https://img.waifuseum.my.id/?size=standard&id=' + pictureId"
+                :src="'https://img.waifuseum.my.id/?size=standard&id=' + picture.id"
             />
             <div class="loading" v-if="!loaded">
                 <BaseIcon name="eos-icons:three-dots-loading" width="120" height="120" />
+            </div>
+            <div class="bar">
+                <span v-for="i in count" :class="{ active: i - 1 <= picture.index }" :key="i" />
             </div>
             <nav>
                 <button class="prev" @click="$emit('prev')" :disabled="!prev">
@@ -110,6 +113,26 @@ onUpdated(() => {
     .loading {
         color: $white;
         margin: auto;
+    }
+    .bar {
+        top: 2px;
+        left: 0;
+        right: 0;
+        display: flex;
+        position: absolute;
+        gap: 5px;
+
+        span {
+            width: 100%;
+            height: 2px;
+            display: block;
+            background: $white;
+            opacity: 0.2;
+
+            &.active {
+                opacity: 1;
+            }
+        }
     }
 
     &-enter-active,
