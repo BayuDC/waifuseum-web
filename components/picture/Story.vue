@@ -120,18 +120,42 @@ watch(props.picture, () => {
         right: 0;
         display: flex;
         position: absolute;
-        gap: 5px;
+        gap: 4px;
 
         span {
-            width: 100%;
-            height: 2px;
+            height: 3px;
             display: block;
             background: $white;
             opacity: 0.2;
+            transition: opacity 0.3s;
+            z-index: 2;
 
             &.active {
                 opacity: 1;
             }
+
+            animation: 0.9s bar-appear forwards;
+
+            @keyframes bar-appear {
+                0% {
+                    width: 0%;
+                }
+
+                100% {
+                    width: 100%;
+                }
+            }
+        }
+
+        &::after {
+            content: '';
+            background: red;
+            height: 120px;
+            top: -2px;
+            left: 0;
+            right: 0;
+            position: absolute;
+            background: linear-gradient(rgba($black, 0.4), rgba($black, 0));
         }
     }
 
