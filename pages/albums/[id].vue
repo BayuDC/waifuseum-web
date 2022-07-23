@@ -9,10 +9,10 @@ const { data: albumData } = await useFetch(`https://lite.waifuseum.my.id/albums/
 
 const totalPage = Math.ceil(albumData.value.album.picturesCount / 12);
 
-const { data: pictureData, refresh } = await useFetch(() => `https://lite.waifuseum.my.id/albums/${id}/pictures`, {
-    initialCache: false,
-    params: { count: 12, page: page.value },
-});
+const { data: pictureData, refresh } = await useFetch(
+    () => `https://lite.waifuseum.my.id/albums/${id}/pictures?count=12&page=${page.value}`,
+    { initialCache: false }
+);
 
 function loadMore() {
     if (page.value == totalPage) return;
