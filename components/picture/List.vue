@@ -2,14 +2,27 @@
 const props = defineProps({
     pictures: Array,
 });
+
+const openStory = ref(false);
+
+watch(openStory, () => {
+    if (openStory.value) {
+        document.body.classList.add('overflow-hidden');
+    } else {
+        document.body.classList.remove('overflow-hidden');
+    }
+});
 </script>
 
 <template>
-    <BaseInfinite is="ul" :data="pictures" class="picture-list">
-        <li v-for="picture in pictures" :key="picture.id">
-            <BasePicture :src="'https://img.waifuseum.my.id/?size=thumbnail&id=' + picture.id" />
-        </li>
-    </BaseInfinite>
+    <div>
+        <BaseInfinite is="ul" :data="pictures" class="picture-list" @finish="$emit('finish')">
+            <li v-for="picture in pictures" :key="picture.id" @click="openStory = true">
+                <BasePicture :src="'https://img.waifuseum.my.id/?size=thumbnail&id=' + picture.id" />
+            </li>
+        </BaseInfinite>
+        <PictureStory v-if="openStory" />
+    </div>
 </template>
 
 <style lang="scss">
@@ -21,8 +34,8 @@ const props = defineProps({
     gap: 15px;
 
     li {
+        cursor: pointer;
         img {
-            cursor: pointer;
             transition: transform 0.3s;
         }
         &:hover {
@@ -31,5 +44,9 @@ const props = defineProps({
             }
         }
     }
+}
+
+.overflow-hidden {
+    overflow: hidden;
 }
 </style>
