@@ -2,26 +2,48 @@
 const props = defineProps({
     pictures: Array,
 });
+const emit = defineEmits(['finish']);
 
-const pictureId = ref(null);
+const picture = reactive({
+    id: null,
+    index: null,
+});
 
-watch(pictureId, () => {
-    if (pictureId.value) {
+watch(picture, () => {
+    if (picture.id) {
         document.body.classList.add('overflow-hidden');
     } else {
         document.body.classList.remove('overflow-hidden');
     }
 });
+
+function view(id, index) {
+    picture.id = id;
+    picture.index = index;
+}
+function next() {
+    if (picture.index >= props.pictures.length - 4) emit('finish');
+    if (picture.index >= props.pictures.length - 1) return;
+
+    picture.index++;
+    picture.id = props.pictures[picture.index].id;
+}
+function prev() {
+    if (picture.index <= 0) return;
+
+    picture.index--;
+    picture.id = props.pictures[picture.index].id;
+}
 </script>
 
 <template>
     <div>
         <BaseInfinite is="ul" :data="pictures" class="picture-list" @finish="$emit('finish')">
-            <li v-for="picture in pictures" :key="picture.id" @click="pictureId = picture.id">
+            <li v-for="(picture, i) in pictures" :key="picture.id" @click="view(picture.id, i)">
                 <BasePicture :src="'https://img.waifuseum.my.id/?size=thumbnail&id=' + picture.id" />
             </li>
         </BaseInfinite>
-        <PictureStory :pictureId="pictureId" @close="pictureId = null" />
+        <PictureStory :pictureId="picture.id" @close="picture.id = null" @next="next" @prev="prev" />
     </div>
 </template>
 

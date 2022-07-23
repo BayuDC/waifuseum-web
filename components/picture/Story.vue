@@ -8,10 +8,10 @@ defineProps(['pictureId']);
         <div v-if="pictureId" class="picture-story">
             <img :src="'https://img.waifuseum.my.id/?size=standard&id=' + pictureId" />
             <nav>
-                <button class="prev" @click="emit('prev')">
+                <button class="prev" @click="$emit('prev')">
                     <BaseIcon name="ic:round-navigate-before" width="60" height="60" />
                 </button>
-                <button class="next" @click="emit('next')">
+                <button class="next" @click="$emit('next')">
                     <BaseIcon name="ic:round-navigate-next" width="60" height="60" />
                 </button>
             </nav>
