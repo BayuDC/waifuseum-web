@@ -28,6 +28,7 @@ useHead({
                 <slot />
             </BaseContainer>
         </main>
+        <Footer />
     </div>
 </template>
 
