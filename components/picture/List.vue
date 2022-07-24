@@ -7,6 +7,8 @@ const emit = defineEmits(['finish']);
 
 const picture = reactive({
     id: null,
+    url: null,
+    source: null,
     index: null,
 });
 
@@ -18,9 +20,11 @@ watch(picture, () => {
     }
 });
 
-function view(id, index) {
-    picture.id = id;
+function view(pic, index) {
+    picture.id = pic.id;
     picture.index = index;
+    picture.source = pic.source;
+    picture.url = pic.url;
 }
 function next() {
     if (picture.index >= props.pictures.length - 4) emit('finish');
@@ -40,8 +44,8 @@ function prev() {
 <template>
     <div>
         <BaseInfinite is="ul" :data="pictures" class="picture-list" @finish="$emit('finish')">
-            <li v-for="(picture, i) in pictures" :key="picture.id" @click="view(picture.id, i)">
-                <BasePicture :src="'https://img.waifuseum.my.id/?size=thumbnail&id=' + picture.id" />
+            <li v-for="(pic, i) in pictures" :key="pic.id" @click="view(pic, i)">
+                <BasePicture :src="'https://img.waifuseum.my.id/?size=thumbnail&id=' + pic.id" />
             </li>
         </BaseInfinite>
         <PictureStory :picture="picture" :total="max" @close="picture.id = null" @next="next" @prev="prev" />

@@ -1,3 +1,7 @@
+<script setup>
+const NuxtLink = resolveComponent('NuxtLink');
+</script>
+
 <template>
     <header>
         <BaseContainer>
@@ -5,7 +9,7 @@
                 <NuxtLink to="/">Waifuseum</NuxtLink>
             </h1>
             <nav>
-                <BaseButton to="/dashboard" icon="bxs:bar-chart-alt-2">Dashboard</BaseButton>
+                <BaseButton :is="NuxtLink" to="/dashboard" icon="bxs:bar-chart-alt-2">Dashboard</BaseButton>
             </nav>
         </BaseContainer>
     </header>

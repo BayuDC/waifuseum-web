@@ -1,14 +1,12 @@
 <script setup>
-const Link = resolveComponent('NuxtLink');
-
 defineProps({
     icon: String,
-    to: String,
+    is: { default: 'button' },
 });
 </script>
 
 <template>
-    <component :is="to ? Link : 'button'" :to="to" class="btn" :class="{ 'btn-icon': icon }">
+    <component :is="is" class="btn" :class="{ 'btn-icon': icon }">
         <template v-if="icon">
             <span>
                 <slot />

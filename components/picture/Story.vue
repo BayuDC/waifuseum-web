@@ -29,7 +29,22 @@ watch(props.picture, () => {
                 </button>
             </nav>
             <PictureStoryBar :length="total" :progress="picture.index" />
-            <BaseButton icon="ep:close-bold" class="btn-close" @click="$emit('close')">Close</BaseButton>
+            <div class="btns">
+                <BaseButton
+                    is="a"
+                    v-if="picture.source"
+                    :href="picture.source"
+                    target="_blank"
+                    icon="charm:link-external"
+                    class="btn-source"
+                >
+                    Source
+                </BaseButton>
+                <BaseButton is="a" :href="picture.url" icon="charm:download" class="btn-download" download>
+                    Download
+                </BaseButton>
+                <BaseButton icon="ep:close-bold" class="btn-close" @click="$emit('close')">Close</BaseButton>
+            </div>
         </div>
     </Transition>
 </template>
@@ -100,12 +115,21 @@ watch(props.picture, () => {
             }
         }
     }
-    .btn {
+    .btns {
         position: absolute;
+        right: 20px;
+        bottom: 20px;
+        display: flex;
+        gap: 10px;
 
-        &-close {
-            right: 20px;
+        .btn-close {
+            position: fixed;
             top: 20px;
+            right: 20px;
+
+            @include tablet {
+                position: static;
+            }
         }
     }
     .loading {
