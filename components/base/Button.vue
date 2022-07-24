@@ -1,11 +1,12 @@
 <script setup>
 defineProps({
     icon: String,
+    is: { default: 'button' },
 });
 </script>
 
 <template>
-    <NuxtLink class="btn" :class="{ 'btn-icon': icon }">
+    <component :is="is" class="btn" :class="{ 'btn-icon': icon }">
         <template v-if="icon">
             <span>
                 <slot />
@@ -13,7 +14,7 @@ defineProps({
             <BaseIcon :name="icon" />
         </template>
         <slot v-else />
-    </NuxtLink>
+    </component>
 </template>
 
 <style lang="scss">

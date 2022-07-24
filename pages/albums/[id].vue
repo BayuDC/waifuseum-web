@@ -20,7 +20,7 @@ watch(
     pictureData,
     () => {
         pictures.value = [...pictures.value, ...pictureData.value.pictures];
-        if (pictureData.value.pictures.length < 12) more.value == false;
+        if (pictureData.value.pictures.length < 12) more.value = false;
     },
     { immediate: true }
 );
@@ -36,6 +36,6 @@ function loadMore() {
 <template>
     <div>
         <AlbumDetail :album="albumData.album" />
-        <PictureList :pictures="pictures" @finish="loadMore" />
+        <PictureList :pictures="pictures" :max="albumData.album.picturesCount" @finish="loadMore" />
     </div>
 </template>
