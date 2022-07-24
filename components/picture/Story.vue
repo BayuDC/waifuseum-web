@@ -1,12 +1,22 @@
 <script setup>
-defineEmits(['close', 'next', 'prev']);
 const props = defineProps(['picture', 'count', 'next', 'prev']);
+const emit = defineEmits(['close', 'next', 'prev']);
 
 const loaded = ref(false);
+const border = reactive({ left: 0, right: 0 });
 
 watch(props.picture, () => {
     loaded.value = false;
+    border.left = props.picture.index - 20;
+    border.right = props.picture.index + 20;
 });
+
+function next() {
+    emit('next');
+}
+function prev() {
+    emit('prev');
+}
 </script>
 
 <template>
@@ -21,13 +31,20 @@ watch(props.picture, () => {
                 <BaseIcon name="eos-icons:three-dots-loading" width="120" height="120" />
             </div>
             <div class="bar">
-                <span v-for="i in count" :class="{ active: i - 1 <= picture.index }" :key="i" />
+                <span
+                    v-for="i in count"
+                    :class="{
+                        active: i - 1 <= picture.index,
+                        hidden: i < border.left + 1 || i > border.right + 1,
+                    }"
+                    :key="i"
+                />
             </div>
             <nav>
-                <button class="prev" @click="$emit('prev')" :disabled="!prev">
+                <button class="prev" @click="prev" :disabled="picture.index <= 0">
                     <BaseIcon name="ic:round-navigate-before" width="60" height="60" />
                 </button>
-                <button class="next" @click="$emit('next')" :disabled="!next">
+                <button class="next" @click="next" :disabled="picture.index >= count - 1">
                     <BaseIcon name="ic:round-navigate-next" width="60" height="60" />
                 </button>
             </nav>
@@ -120,9 +137,9 @@ watch(props.picture, () => {
         right: 0;
         display: flex;
         position: absolute;
-        gap: 4px;
 
         span {
+            margin: 0 2px;
             height: 3px;
             display: block;
             background: $white;
@@ -133,8 +150,13 @@ watch(props.picture, () => {
             &.active {
                 opacity: 1;
             }
-
-            animation: 0.9s bar-appear forwards;
+            &.hidden {
+                animation: 0.9s bar-vanish forwards;
+                margin: 0;
+            }
+            & {
+                animation: 0.9s bar-appear forwards;
+            }
 
             @keyframes bar-appear {
                 0% {
@@ -145,11 +167,19 @@ watch(props.picture, () => {
                     width: 100%;
                 }
             }
+            @keyframes bar-vanish {
+                0% {
+                    width: 100%;
+                }
+
+                100% {
+                    width: 0%;
+                }
+            }
         }
 
         &::after {
             content: '';
-            background: red;
             height: 120px;
             top: -2px;
             left: 0;

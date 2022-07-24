@@ -36,6 +36,6 @@ function loadMore() {
 <template>
     <div>
         <AlbumDetail :album="albumData.album" />
-        <PictureList :pictures="pictures" @finish="loadMore" />
+        <PictureList :pictures="pictures" :max="albumData.album.picturesCount" @finish="loadMore" />
     </div>
 </template>
