@@ -20,6 +20,8 @@ footer {
     background: $black;
     color: $white;
     padding: 20px 0 30px 0;
+    margin-top: auto;
+
     .container {
         display: flex;
         align-items: center;
