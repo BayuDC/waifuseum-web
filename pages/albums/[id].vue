@@ -20,7 +20,7 @@ watch(
     pictureData,
     () => {
         pictures.value = [...pictures.value, ...pictureData.value.pictures];
-        if (pictureData.value.pictures.length < 12) more.value == false;
+        if (pictureData.value.pictures.length < 12) more.value = false;
     },
     { immediate: true }
 );

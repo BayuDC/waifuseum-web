@@ -44,7 +44,7 @@ function prev() {
                 <BasePicture :src="'https://img.waifuseum.my.id/?size=thumbnail&id=' + picture.id" />
             </li>
         </BaseInfinite>
-        <PictureStory :picture="picture" :count="max" @close="picture.id = null" @next="next" @prev="prev" />
+        <PictureStory :picture="picture" :total="max" @close="picture.id = null" @next="next" @prev="prev" />
     </div>
 </template>
 
