@@ -1,7 +1,6 @@
 <script setup>
-defineProps({
-    albums: Array,
-});
+defineProps(['albums']);
+defineEmits(['finish']);
 </script>
 
 <template>
