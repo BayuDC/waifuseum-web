@@ -5,10 +5,14 @@
             <span>|</span>
             <ul>
                 <li>
-                    <a href="#"><BaseIcon name="bxl:github" width="24" height="24" /></a>
+                    <a href="https://github.com/waifuseum" target="_blank">
+                        <BaseIcon name="bxl:github" width="24" height="24" />
+                    </a>
                 </li>
                 <li>
-                    <a href="#"><BaseIcon name="bxl:discord" width="24" height="24" /></a>
+                    <a href="https://discord.gg/8sSfCNCXHW" target="_blank">
+                        <BaseIcon name="bxl:discord" width="24" height="24" />
+                    </a>
                 </li>
             </ul>
         </BaseContainer>
@@ -19,7 +23,7 @@
 footer {
     background: $black;
     color: $white;
-    padding: 20px 0 30px 0;
+    padding: 20px 0;
     margin-top: auto;
 
     .container {
