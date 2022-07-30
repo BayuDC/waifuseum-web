@@ -1,6 +1,7 @@
 <script setup>
 defineProps({
     icon: String,
+    hide: { default: true },
     is: { default: 'button' },
 });
 </script>
@@ -8,7 +9,7 @@ defineProps({
 <template>
     <component :is="is" class="btn" :class="{ 'btn-icon': icon }">
         <template v-if="icon">
-            <span>
+            <span :class="{ active: !hide }">
                 <slot />
             </span>
             <BaseIcon :name="icon" />
@@ -35,6 +36,9 @@ defineProps({
         @include mobile {
             span {
                 display: none;
+            }
+            span.active {
+                display: initial;
             }
         }
     }

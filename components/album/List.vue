@@ -14,7 +14,9 @@ defineProps({
             <AlbumCard :album="album" />
         </li>
         <li class="btn-more" v-if="!infinite">
-            <BaseButton to="/albums" icon="pepicons:triangle-right-filled" :is="NuxtLink">View More Albums</BaseButton>
+            <BaseButton to="/albums" icon="pepicons:triangle-right-filled" :is="NuxtLink" :hide="false">
+                View More Albums
+            </BaseButton>
         </li>
     </component>
 </template>
