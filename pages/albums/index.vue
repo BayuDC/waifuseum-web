@@ -1,32 +1,27 @@
 <script setup>
-const page = ref(1);
-const more = ref(true);
+const albumStore = useAlbum();
 
-const { data: albumData, refresh: albumRefresh } = await useFetch(
-    () => `https://lite.waifuseum.my.id/albums?count=12&page=${page.value}`
+const { data: dataAlbum, refresh: refreshAlbum } = await useFetch(
+    () => `https://lite.waifuseum.my.id/albums?count=12&page=${albumStore.value.page}`
 );
 
-const albums = ref([]);
+watch(dataAlbum, () => {
+    albumStore.value.data = [...albumStore.value.data, ...dataAlbum.value.albums];
+    if (dataAlbum.value.albums.length < 12) albumStore.value.done = true;
+});
 
-watch(
-    albumData,
-    () => {
-        albums.value = [...albums.value, ...albumData.value.albums];
-        if (albumData.value.albums.length < 12) more.value == false;
-    },
-    { immediate: true }
-);
+onBeforeMount(() => {
+    if (albumStore.value.data.length) return;
+    albumStore.value.data = dataAlbum.value.albums;
+});
 
 function loadMore() {
-    if (!more.value) return;
-
-    page.value++;
-    albumRefresh();
+    if (albumStore.value.done) return;
+    albumStore.value.page++;
+    refreshAlbum();
 }
 </script>
 
 <template>
-    <div>
-        <AlbumAll :albums="albums" @finish="loadMore" />
-    </div>
+    <AlbumAll :albums="albumStore.data" @finish="loadMore" />
 </template>
