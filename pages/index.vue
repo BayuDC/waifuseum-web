@@ -1,7 +1,5 @@
 <script setup>
-const { data: albumData } = await useFetch('https://lite.waifuseum.my.id/albums', {
-    params: { count: 11 },
-});
+const { data: albumData } = await useFetch('https://lite.waifuseum.my.id/albums?count=12');
 </script>
 
 <template>
