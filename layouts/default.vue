@@ -28,16 +28,22 @@ useHead({
                 <slot />
             </BaseContainer>
         </main>
+        <Footer />
     </div>
 </template>
 
 <style lang="scss">
-main {
-    padding: 40px 0;
+.app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    main {
+        padding: 40px 0;
 
-    h2 {
-        font-size: 30px;
-        margin-bottom: 20px;
+        h2 {
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
     }
 }
 
