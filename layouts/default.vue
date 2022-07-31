@@ -22,7 +22,6 @@ useNuxtApp().hook('page:finish', () => {
 
 <template>
     <div class="app">
-        <NuxtLoadingIndicator color="#23ce6b" />
         <TheHeader />
         <TheContent>
             <NuxtPage />
