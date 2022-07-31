@@ -1,8 +1,4 @@
 <script setup>
-useNuxtApp().hook('page:finish', () => {
-    window.scrollTo(0, 0);
-});
-
 useHead({
     title: 'Waifuseum',
     // titleTemplate: (title) => `My App - ${title}`,
@@ -17,6 +13,10 @@ useHead({
             href: 'https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,500;0,600;0,700;1,700&display=swap',
         },
     ],
+});
+
+useNuxtApp().hook('page:finish', () => {
+    window.scrollTo(0, 0);
 });
 </script>
 

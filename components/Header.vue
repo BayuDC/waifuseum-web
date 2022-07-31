@@ -4,6 +4,7 @@ const NuxtLink = resolveComponent('NuxtLink');
 
 <template>
     <header>
+        <NuxtLoadingIndicator color="#23ce6b" />
         <BaseContainer>
             <h1>
                 <NuxtLink to="/">Waifuseum</NuxtLink>
