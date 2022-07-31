@@ -21,8 +21,8 @@
 
 <style lang="scss">
 footer {
-    background: $black;
     color: $white;
+    background: $black;
     padding: 20px 0;
     margin-top: auto;
 
@@ -42,12 +42,12 @@ footer {
         display: flex;
         align-items: center;
         gap: 5px;
-    }
 
-    a {
-        color: white;
-        display: block;
-        height: 24px;
+        a {
+            color: white;
+            display: block;
+            height: 24px;
+        }
     }
 
     @include mobile {

@@ -22,13 +22,12 @@ useNuxtApp().hook('page:finish', () => {
 
 <template>
     <div class="app">
-        <Header />
-        <main>
-            <BaseContainer>
-                <slot />
-            </BaseContainer>
-        </main>
-        <Footer />
+        <NuxtLoadingIndicator color="#23ce6b" />
+        <TheHeader />
+        <TheContent>
+            <NuxtPage />
+        </TheContent>
+        <TheFooter />
     </div>
 </template>
 
@@ -37,14 +36,6 @@ useNuxtApp().hook('page:finish', () => {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    main {
-        padding: 40px 0;
-
-        h2 {
-            font-size: 30px;
-            margin-bottom: 20px;
-        }
-    }
 }
 
 .page {

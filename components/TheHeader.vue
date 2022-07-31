@@ -4,22 +4,17 @@ const NuxtLink = resolveComponent('NuxtLink');
 
 <template>
     <header>
-        <NuxtLoadingIndicator color="#23ce6b" />
         <BaseContainer>
-            <h1>
-                <NuxtLink to="/">Waifuseum</NuxtLink>
-            </h1>
-            <nav>
-                <BaseButton :is="NuxtLink" to="/dashboard" icon="bxs:bar-chart-alt-2">Dashboard</BaseButton>
-            </nav>
+            <h1><NuxtLink to="/">Waifuseum</NuxtLink></h1>
+            <nav><BaseButton :is="NuxtLink" to="/dashboard" icon="bxs:bar-chart-alt-2">Dashboard</BaseButton></nav>
         </BaseContainer>
     </header>
 </template>
 
 <style lang="scss">
 header {
-    background: $black;
     color: $green;
+    background: $black;
 
     .container {
         height: 80px;
