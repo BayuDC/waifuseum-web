@@ -1,8 +1,6 @@
 <script setup>
 import { Icon } from '@iconify/vue';
-defineProps({
-    name: String,
-});
+defineProps({ name: String });
 </script>
 
 <template>

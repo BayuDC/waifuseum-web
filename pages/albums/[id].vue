@@ -3,7 +3,9 @@ const route = useRoute();
 const id = route.params.id;
 
 const page = ref(1);
-const more = ref(true);
+const done = ref(false);
+const pictures = ref([]);
+const picture = ref(null);
 
 const { data: albumData } = await useFetch(`https://lite.waifuseum.my.id/albums/${id}`, {
     initialCache: false,
@@ -14,28 +16,60 @@ const { data: pictureData, refresh: pictureRefresh } = await useFetch(
     { initialCache: false }
 );
 
-const pictures = ref([]);
-
 watch(
     pictureData,
     () => {
         pictures.value = [...pictures.value, ...pictureData.value.pictures];
-        if (pictureData.value.pictures.length < 12) more.value = false;
+        if (pictureData.value.pictures.length < 12) done.value = true;
     },
     { immediate: true }
 );
 
 function loadMore() {
-    if (!more.value) return;
+    if (done.value) return;
 
     page.value++;
     pictureRefresh();
 }
-</script>
+function viewPicture({ id, source, url }, index) {
+    picture.value = { id, source, url, index };
+}
+function nextPicture() {
+    if (picture.value.index >= pictures.value.length - 4) loadMore();
+    if (picture.value.index >= pictures.value.length - 1) return;
+    const index = ++picture.value.index;
+    picture.value.id = pictures.value[index].id;
+    picture.value.url = pictures.value[index].url;
+    picture.value.source = pictures.value[index].source;
+}
+function prevPicture() {
+    if (picture.value.index <= 0) return;
 
+    const index = --picture.value.index;
+    picture.value.id = pictures.value[index].id;
+    picture.value.url = pictures.value[index].url;
+    picture.value.source = pictures.value[index].source;
+}
+</script>
 <template>
-    <div>
-        <AlbumDetail :album="albumData.album" />
-        <PictureList :pictures="pictures" :max="albumData.album.picturesCount" @finish="loadMore" />
+    <div class="album-single">
+        <section class="album-information">
+            <AlbumDetail :album="albumData.album" />
+        </section>
+        <section class="album-pictures">
+            <InfiniteScroll :data="pictures" @end="loadMore">
+                <PictureList :pictures="pictures" @select="viewPicture" />
+            </InfiniteScroll>
+            <Transition name="picture-story">
+                <PictureStory
+                    v-if="picture"
+                    :picture="picture"
+                    :total="albumData.album.picturesCount"
+                    @close="picture = null"
+                    @prev="prevPicture"
+                    @next="nextPicture"
+                />
+            </Transition>
+        </section>
     </div>
 </template>

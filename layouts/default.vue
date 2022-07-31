@@ -1,8 +1,4 @@
 <script setup>
-useNuxtApp().hook('page:finish', () => {
-    window.scrollTo(0, 0);
-});
-
 useHead({
     title: 'Waifuseum',
     // titleTemplate: (title) => `My App - ${title}`,
@@ -18,17 +14,20 @@ useHead({
         },
     ],
 });
+
+useNuxtApp().hook('page:finish', () => {
+    window.scrollTo(0, 0);
+});
 </script>
 
 <template>
     <div class="app">
-        <Header />
-        <main>
-            <BaseContainer>
-                <slot />
-            </BaseContainer>
-        </main>
-        <Footer />
+        <NuxtLoadingIndicator color="#23ce6b" />
+        <TheHeader />
+        <TheContent>
+            <NuxtPage />
+        </TheContent>
+        <TheFooter />
     </div>
 </template>
 
@@ -37,14 +36,6 @@ useHead({
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    main {
-        padding: 40px 0;
-
-        h2 {
-            font-size: 30px;
-            margin-bottom: 20px;
-        }
-    }
 }
 
 .page {
