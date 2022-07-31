@@ -1,9 +1,6 @@
 <script setup>
-const props = defineProps({
-    is: { type: String, default: 'ul' },
-    data: Array,
-});
-const emit = defineEmits(['finish']);
+const props = defineProps(['data']);
+const emit = defineEmits(['end']);
 
 const io = ref(null);
 const self = ref(null);
@@ -13,20 +10,23 @@ watch(
     () => {
         nextTick(() => {
             io.value.disconnect();
-            io.value.observe(self.value.lastElementChild);
+            io.value.observe(self.value.firstElementChild.lastElementChild);
         });
     }
 );
+
 onMounted(() => {
+    self.value = self.value.firstElementChild;
+
     io.value = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                emit('finish');
+                emit('end');
                 io.value.disconnect();
             }
         });
     });
-    io.value.observe(self.value.lastElementChild);
+    io.value.observe(self.value.firstElementChild.lastElementChild);
 });
 onUnmounted(() => {
     io.value.disconnect();
@@ -34,7 +34,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <component :is="is" ref="self">
+    <div class="infinite" ref="self">
         <slot />
-    </component>
+    </div>
 </template>

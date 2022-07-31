@@ -6,7 +6,7 @@ defineProps({
 
 <template>
     <NuxtLink class="album-card" :to="'/albums/' + album.id">
-        <BasePicture :src="'https://img.waifuseum.my.id/?size=thumbnail&id=' + album.pictures[0].id" />
+        <PictureThumb :src="'https://img.waifuseum.my.id/?size=thumbnail&id=' + album.pictures[0].id" />
         <h3>{{ album.name }}</h3>
         <div class="meta">
             <p class="count">
@@ -27,6 +27,7 @@ defineProps({
     gap: 10px;
     height: 100%;
     box-sizing: border-box;
+    color: $black;
 
     figure {
         img {
@@ -52,8 +53,6 @@ defineProps({
             color: $gray;
         }
     }
-
-    color: $black;
 
     &:hover {
         background: rgba($color: $green, $alpha: 0.16);

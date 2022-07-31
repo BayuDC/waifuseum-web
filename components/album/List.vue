@@ -1,19 +1,15 @@
 <script setup>
-const BaseInfinite = resolveComponent('BaseInfinite');
-const NuxtLink = resolveComponent('NuxtLink');
-
 defineProps({
     albums: Array,
-    infinite: Boolean,
 });
 </script>
 
 <template>
-    <component :is="infinite ? BaseInfinite : 'ul'" class="album-list" :data="albums">
+    <ul class="album-list">
         <li v-for="album in albums" :key="album.id">
             <AlbumCard :album="album" />
         </li>
-    </component>
+    </ul>
 </template>
 
 <style lang="scss">
