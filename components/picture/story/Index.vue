@@ -17,11 +17,14 @@ onUnmounted(() => {
 
 <template>
     <div class="picture-story">
-        <img
-            v-show="loaded"
-            @load="loaded = true"
-            :src="'https://img.waifuseum.my.id/?size=standard&id=' + picture.id"
-        />
+        <Transition name="picture-story">
+            <img
+                v-show="loaded"
+                @load="loaded = true"
+                :src="'https://img.waifuseum.my.id/?size=standard&id=' + picture.id"
+                :key="picture.id"
+            />
+        </Transition>
         <div class="loading" v-if="!loaded">
             <Icon name="eos-icons:three-dots-loading" width="120" height="120" />
         </div>
@@ -47,6 +50,19 @@ onUnmounted(() => {
     backdrop-filter: blur(16px);
     display: flex;
 
+    &-enter-active,
+    &-leave-active {
+        transition: 0.3s;
+    }
+    &-enter-from,
+    &-leave-to {
+        opacity: 0;
+    }
+    &-enter-to,
+    &-leave-from {
+        opacity: 1;
+    }
+
     img {
         display: block;
         max-width: 100%;
@@ -54,8 +70,12 @@ onUnmounted(() => {
         margin: auto;
     }
     .loading {
+        position: absolute;
         color: $white;
-        margin: auto;
+        align-self: center;
+        width: 100%;
+        display: flex;
+        justify-content: center;
     }
 }
 

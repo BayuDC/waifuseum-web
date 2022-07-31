@@ -60,14 +60,16 @@ function prevPicture() {
             <InfiniteScroll :data="pictures" @end="loadMore">
                 <PictureList :pictures="pictures" @select="viewPicture" />
             </InfiniteScroll>
-            <PictureStory
-                v-if="picture"
-                :picture="picture"
-                :total="albumData.album.picturesCount"
-                @close="picture = null"
-                @prev="prevPicture"
-                @next="nextPicture"
-            />
+            <Transition name="picture-story">
+                <PictureStory
+                    v-if="picture"
+                    :picture="picture"
+                    :total="albumData.album.picturesCount"
+                    @close="picture = null"
+                    @prev="prevPicture"
+                    @next="nextPicture"
+                />
+            </Transition>
         </section>
     </div>
 </template>
