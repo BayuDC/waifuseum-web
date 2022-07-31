@@ -7,9 +7,9 @@ const NuxtLink = resolveComponent('NuxtLink');
     <section class="album-recent">
         <h2>Recent Albums</h2>
         <AlbumList :albums="albums" />
-        <BaseButton to="/albums" icon="pepicons:triangle-right-filled" :is="NuxtLink" :hide="false">
+        <Button to="/albums" icon="pepicons:triangle-right-filled" :responsive="false" class="button-more">
             View More Albums
-        </BaseButton>
+        </Button>
     </section>
 </template>
 
@@ -17,7 +17,7 @@ const NuxtLink = resolveComponent('NuxtLink');
 .album-recent {
     display: flex;
     flex-direction: column;
-    .btn {
+    .button-more {
         margin-left: auto;
         margin-top: 20px;
     }

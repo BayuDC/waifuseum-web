@@ -1,8 +1,8 @@
 <template>
     <main>
-        <BaseContainer>
+        <Container>
             <slot />
-        </BaseContainer>
+        </Container>
     </main>
 </template>
 

@@ -1,21 +1,21 @@
 <template>
     <footer>
-        <BaseContainer>
+        <Container>
             <p>Made with ❤️ by <b>Waifuseum Team</b></p>
             <span>|</span>
             <ul>
                 <li>
                     <a href="https://github.com/waifuseum" target="_blank">
-                        <BaseIcon name="bxl:github" width="24" height="24" />
+                        <Icon name="bxl:github" width="24" height="24" />
                     </a>
                 </li>
                 <li>
                     <a href="https://discord.gg/8sSfCNCXHW" target="_blank">
-                        <BaseIcon name="bxl:discord" width="24" height="24" />
+                        <Icon name="bxl:discord" width="24" height="24" />
                     </a>
                 </li>
             </ul>
-        </BaseContainer>
+        </Container>
     </footer>
 </template>
 

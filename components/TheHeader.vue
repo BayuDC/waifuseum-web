@@ -4,10 +4,10 @@ const NuxtLink = resolveComponent('NuxtLink');
 
 <template>
     <header>
-        <BaseContainer>
+        <Container>
             <h1><NuxtLink to="/">Waifuseum</NuxtLink></h1>
-            <nav><BaseButton :is="NuxtLink" to="/dashboard" icon="bxs:bar-chart-alt-2">Dashboard</BaseButton></nav>
-        </BaseContainer>
+            <nav><Button to="/dashboard" icon="bxs:bar-chart-alt-2">Dashboard</Button></nav>
+        </Container>
     </header>
 </template>
 

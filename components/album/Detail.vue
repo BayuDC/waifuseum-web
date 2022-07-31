@@ -14,8 +14,8 @@ defineProps({
             </p>
         </div>
         <!-- <div class="badges">
-            <BaseBadge v-if="album.community">Community</BaseBadge>
-            <BaseBadge v-if="album.private">Private</BaseBadge>
+            <Badge v-if="album.community">Community</Badge>
+            <Badge v-if="album.private">Private</Badge>
         </div> -->
     </div>
 </template>
