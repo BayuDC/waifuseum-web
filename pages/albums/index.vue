@@ -1,9 +1,9 @@
 <script setup>
 // const albumStore = useAlbum();
 
-const { data: dataAlbum, refresh: refreshAlbum } = await useFetch(
-    () => `https://lite.waifuseum.my.id/albums?count=100`
-);
+const { data: dataAlbum, refresh: refreshAlbum } = await useFetch(() => `/albums?count=100`, {
+    baseURL: 'https://waifuseum-bayudc.koyeb.app',
+});
 
 // watch(dataAlbum, () => {
 //     albumStore.value.data = [...albumStore.value.data, ...dataAlbum.value.albums];

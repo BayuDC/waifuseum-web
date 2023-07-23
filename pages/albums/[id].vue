@@ -7,13 +7,17 @@ const done = ref(false);
 const pictures = ref([]);
 const picture = ref(null);
 
-const { data: albumData } = await useFetch(`https://lite.waifuseum.my.id/albums/${id}`, {
+const { data: albumData } = await useFetch(`/albums/${id}`, {
+    baseURL: 'https://waifuseum-bayudc.koyeb.app',
     initialCache: false,
 });
 
 const { data: pictureData, refresh: pictureRefresh } = await useFetch(
-    () => `https://lite.waifuseum.my.id/albums/${id}/pictures?count=12&page=${page.value}`,
-    { initialCache: false }
+    () => `/albums/${id}/pictures?count=12&page=${page.value}`,
+    {
+        baseURL: 'https://waifuseum-bayudc.koyeb.app',
+        initialCache: false,
+    }
 );
 
 watch(
@@ -31,15 +35,15 @@ function loadMore() {
     page.value++;
     pictureRefresh();
 }
-function viewPicture({ id, source, url }, index) {
-    picture.value = { id, source, url, index };
+function viewPicture({ id, source, urls }, index) {
+    picture.value = { id, source, urls, index };
 }
 function nextPicture() {
     if (picture.value.index >= pictures.value.length - 4) loadMore();
     if (picture.value.index >= pictures.value.length - 1) return;
     const index = ++picture.value.index;
     picture.value.id = pictures.value[index].id;
-    picture.value.url = pictures.value[index].url;
+    picture.value.urls = pictures.value[index].urls;
     picture.value.source = pictures.value[index].source;
 }
 function prevPicture() {
@@ -47,7 +51,7 @@ function prevPicture() {
 
     const index = --picture.value.index;
     picture.value.id = pictures.value[index].id;
-    picture.value.url = pictures.value[index].url;
+    picture.value.urls = pictures.value[index].urls;
     picture.value.source = pictures.value[index].source;
 }
 </script>

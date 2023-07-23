@@ -6,7 +6,7 @@ defineProps({
 
 <template>
     <NuxtLink class="album-card" :to="'/albums/' + album.id">
-        <PictureThumb :src="'https://img.waifuseum.my.id/?size=thumbnail&id=' + album.pictures[0].id" />
+        <PictureThumb :src="album.pictures[0].urls.thumbnail" />
         <h3>{{ album.name }}</h3>
         <div class="meta">
             <p class="count">

@@ -3,7 +3,7 @@ defineProps({
     src: String,
 });
 
-const loaded = ref(false);
+const loaded = ref(true);
 </script>
 
 <template>
@@ -19,10 +19,15 @@ const loaded = ref(false);
 figure {
     overflow: hidden;
     border-radius: 10px;
+    aspect-ratio: 1 / 1;
 
     img,
     svg {
         width: 100%;
+        height: 100%;
+        // max-width: 100%;
+        object-fit: cover;
+        object-position: top;
         display: block;
     }
     svg {

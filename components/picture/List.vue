@@ -8,7 +8,7 @@ defineEmits(['select']);
 <template>
     <ul class="picture-list">
         <li v-for="(picture, index) in pictures" :key="picture.id" @click="$emit('select', picture, index)">
-            <PictureThumb :src="'https://img.waifuseum.my.id/?size=thumbnail&id=' + picture.id" />
+            <PictureThumb :src="picture.urls.thumbnail" />
         </li>
     </ul>
 </template>

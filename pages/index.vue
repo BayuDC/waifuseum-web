@@ -1,5 +1,7 @@
 <script setup>
-const { data: dataAlbum } = await useFetch('https://lite.waifuseum.my.id/albums?count=12');
+const { data: dataAlbum } = await useFetch('/albums?count=12', {
+    baseURL: 'https://waifuseum-bayudc.koyeb.app',
+});
 </script>
 
 <template>

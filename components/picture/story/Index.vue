@@ -17,13 +17,8 @@ onUnmounted(() => {
 
 <template>
     <div class="picture-story">
-        <Transition name="picture-story">
-            <img
-                v-show="loaded"
-                @load="loaded = true"
-                :src="'https://img.waifuseum.my.id/?size=standard&id=' + picture.id"
-                :key="picture.id"
-            />
+        <Transition name="picture-story" modu="out-in">
+            <img v-show="loaded" @load="loaded = true" :src="picture.urls.standard" :key="picture.id" />
         </Transition>
         <div class="loading" v-if="!loaded">
             <Icon name="eos-icons:three-dots-loading" width="120" height="120" />
@@ -35,7 +30,7 @@ onUnmounted(() => {
             @next="$emit('next')"
         />
         <PictureStoryBar :length="total" :progress="picture.index" />
-        <PictureStoryButtons @close="$emit('close')" :source="picture?.source" :url="picture.url" />
+        <PictureStoryButtons @close="$emit('close')" :source="picture?.source" :url="picture.urls.original" />
     </div>
 </template>
 
