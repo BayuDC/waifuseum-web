@@ -1,14 +1,9 @@
 <template>
     <footer>
         <Container>
-            <p>Made with ❤️ by <b>Waifuseum Team</b></p>
+            <p>Made with ❤️ by <b>BayuDC</b></p>
             <span>|</span>
             <ul>
-                <li>
-                    <a href="https://github.com/waifuseum" target="_blank">
-                        <Icon name="bxl:github" width="24" height="24" />
-                    </a>
-                </li>
                 <li>
                     <a href="https://discord.gg/8sSfCNCXHW" target="_blank">
                         <Icon name="bxl:discord" width="24" height="24" />
